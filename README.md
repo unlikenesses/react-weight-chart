@@ -1,6 +1,6 @@
 # React Weight Chart
 
-Weight tracker in [https://facebook.github.io/react](React.js).
+Weight tracker in [React.js](https://facebook.github.io/react).
 
 ![Screenshot](images/screenshot.jpg)
 
