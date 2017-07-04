@@ -1,0 +1,40 @@
+.app {
+    width: 96%;
+    border: 1px solid #EFEFEF;
+    padding: 1%;
+    overflow: auto;
+    margin: 20px auto;
+    border-radius: 18px;
+}
+
+.chartArea {
+    width: 50%;
+    float: left;
+    margin-right: 5%;
+}
+
+.dataArea {
+    width: 45%;
+    float: left;
+}
+
+.dataArea input[type="text"] {
+    width: 60%;
+    display: block;
+    padding: 12px 15px;
+    border: 1px solid #EEE;
+    border-radius: 3px;
+    margin-bottom: 7px;
+    font-size: 12px;
+}
+
+.dataArea button {
+    background: #27A7FE;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
