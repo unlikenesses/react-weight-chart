@@ -15,7 +15,7 @@ class App extends Component {
 	}
 
 	componentWillMount() {
-		this.ref1 = base.syncState('weightPoints', {
+		this.ref1 = base.syncState('dataPoints', {
 			context: this,
 			state: 'weightPoints'
 		});

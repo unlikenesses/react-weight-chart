@@ -42,7 +42,6 @@ class ChartArea extends React.Component {
 	}
 
 	drawChart(weightPoints) {
-		console.log(weightPoints);
 		var data = this.composeData(weightPoints);
 		this.chart = new Chart(this.ctx, {
 		    type: 'line',
