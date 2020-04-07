@@ -19,21 +19,14 @@ class ChartArea extends React.Component {
 		return formatted;	
 	}
 
-	composeData(weightPoints, bmiPoints) {
+	composeData(weightPoints) {
 		var dateData = [];
 		var weightData = [];
-		var bmiData = [];
 		Object
 			.keys(weightPoints)
 			.forEach(key => {
 				dateData.push(parseInt(key, 10) * 1000);
 				weightData.push(weightPoints[key]);
-			});
-		Object
-			.keys(bmiPoints)
-			.forEach(key => {
-				dateData.push(parseInt(key, 10) * 1000);
-				bmiData.push(bmiPoints[key]);
 			});
 
 		return {
@@ -43,18 +36,14 @@ class ChartArea extends React.Component {
 					label: 'Weight',
 					data: weightData,
 					lineTension: 0
-				},
-				{
-					label: 'BMI',
-					data: bmiData,
-					lineTension: 0
 				}
 			]
 		};
 	}
 
-	drawChart(weightPoints, bmiPoints) {
-		var data = this.composeData(weightPoints, bmiPoints);
+	drawChart(weightPoints) {
+		console.log(weightPoints);
+		var data = this.composeData(weightPoints);
 		this.chart = new Chart(this.ctx, {
 		    type: 'line',
 		    data: data,
@@ -81,7 +70,7 @@ class ChartArea extends React.Component {
 		    		yAxes: [{
 		    			scaleLabel: {
 		    				display: true,
-		    				labelString: 'Weight / BMI'
+		    				labelString: 'Weight'
 		    			}
 		    		}]
 		    	}
@@ -91,11 +80,11 @@ class ChartArea extends React.Component {
 
 	componentDidMount() {
 		this.ctx = document.getElementById('chartCanvas');
-		this.drawChart(this.props.weightPoints, this.props.bmiPoints);
+		this.drawChart(this.props.weightPoints);
 	}
 
 	componentWillReceiveProps(props) {
-		this.drawChart(props.weightPoints, props.bmiPoints);
+		this.drawChart(props.weightPoints);
 	}
 
 	render() {

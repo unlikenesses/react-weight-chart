@@ -11,8 +11,7 @@ class DataArea extends React.Component {
 		e.preventDefault();
 		const dataPoint = {
 			date: this.date.value,
-			weight: this.weight.value,
-			bmi: this.bmi.value
+			weight: this.weight.value
 		};
 		this.props.addDataPoint(dataPoint);
 		this.dataForm.reset();		
@@ -30,7 +29,6 @@ class DataArea extends React.Component {
 				<form ref={(input) => this.dataForm = input} onSubmit={(e) => this.addDataPoint(e)}>
 					<input ref={(input) => this.date = input} id="dateInput" type="text" name="date" placeholder="Date (dd/mm/yyyy)" onClick={this.setCurrentDate} />
 					<input ref={(input) => this.weight = input} type="text" name="weight" placeholder="Weight (kg)"/>
-					<input ref={(input) => this.bmi = input} type="text" name="bmi" placeholder="BMI (%)"/>
 					<button type="submit">Enter</button>
 				</form>	
 			</div>
