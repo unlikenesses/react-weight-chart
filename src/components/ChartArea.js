@@ -1,10 +1,12 @@
 import React from 'react';
 import Chart from 'chart.js';
+import * as ChartAnnotation from 'chartjs-plugin-annotation';
 
 class ChartArea extends React.Component {
 
 	constructor() {
 		super();
+		Chart.plugins.register([ChartAnnotation]);
 		this.composeData = this.composeData.bind(this);
 		this.drawChart = this.drawChart.bind(this);
 	}
@@ -43,13 +45,24 @@ class ChartArea extends React.Component {
 
 	drawChart(weightPoints) {
 		var data = this.composeData(weightPoints);
+		const threshold = 80;
 		this.chart = new Chart(this.ctx, {
 		    type: 'line',
 		    data: data,
 		    options: {
 		    	legend: {
 		    		display: false
-		    	},
+				},
+				annotation: {
+					annotations: [{
+						type: 'line',
+						mode: 'horizontal',
+						scaleID: 'y-axis-0',
+						value: threshold,
+						borderColor: 'rgb(255, 95, 95)',
+						borderWidth: 1,
+					}]
+				},
 		    	tooltips: {
 		    		callbacks: {
 		    			label: function(tooltipItems, data) {
@@ -67,6 +80,9 @@ class ChartArea extends React.Component {
 		    			}
 		    		}],
 		    		yAxes: [{
+						ticks: {
+							min: 76
+						},
 		    			scaleLabel: {
 		    				display: true,
 		    				labelString: 'Weight'
